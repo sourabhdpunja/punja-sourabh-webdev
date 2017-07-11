@@ -1,6 +1,6 @@
 # web-dev-template
 
-1)I am Sourabh Punja, a graduate student at Northeastern University. I have 2 years of work experience as a software developer and part of quality assurance team at Tata Consultancy Services from 2014 to 2016. Below is the project that I have worked on
+I am Sourabh Punja, a graduate student at Northeastern University. I have 2 years of work experience as a software developer and part of quality assurance team at Tata Consultancy Services from 2014 to 2016. Below is the project that I have worked on
 
 a)Worked as both Automation and manual tester for WeCare Application which is a telecommunication website intending to provide seamless connectivity between mobile subscribers and operators.
 
