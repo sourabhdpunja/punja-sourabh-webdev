@@ -12,7 +12,7 @@ a)Root to hosted environment on
  HEROKU - https://punja-sourabh-web-dev.herokuapp.com/
  GITHUB URL:: https://github.com/sourabhdpunja/punja-sourabh-webdev
 
-b)Project -
+b)Project -  https://punja-sourabh-web-dev.herokuapp.com/project/index.html
 
-c)Assignment -
+c)Assignment - https://punja-sourabh-web-dev.herokuapp.com/assignment/
 
