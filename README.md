@@ -8,15 +8,12 @@ a)Worked as both Automation and manual tester for WeCare Application which is a 
 
 3) Links to the following ::
 
-a)Root to hosted environment on Heroku - (https://punja-sourabh-web-dev.herokuapp.com/)
+a)Root to hosted environment on HEROKU - https://punja-sourabh-web-dev.herokuapp.com/
+                                GITHUB URL:: https://github.com/sourabhdpunja/punja-sourabh-webdev
 
 b)Project -
 
 c)Assignment -
 
-1. git clone https://github.com/sourabhdpunja/punja-sourabh-webdev
-1. cd web-dev-template
-1. npm install
-1. mongod
-1. node server.js
-1. browse to localhost:3000
+GITHUB URL:: https://github.com/sourabhdpunja/punja-sourabh-webdev
+
