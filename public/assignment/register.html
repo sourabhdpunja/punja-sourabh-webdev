@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Register</title>
     <link href="../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
+
 <div class="container-fluid">
-    <h2>Login</h2>
-    <label for="username">Usernregister.htmlame</label>
+    <h2>Register</h2>
+    <label for="username">Username</label>
     <input name="username"
            class="form-control"
            id="username"
@@ -21,12 +22,18 @@
            class="form-control"
            id="password"
            placeholder="alice"/>
+    <label for="password2">Verify Password</label>
+    <input name="password2"
+           type="password"
+           class="form-control"
+           id="password2"
+           placeholder="alice"/>
         <a class="btn btn-default btn-primary btn-block"
            href="profile.html"
-           role="button">Login</a>
-    <a class="btn btn-default btn-success btn-block"
-       href="register.html"
-       role="button">Register</a>
+           role="button">Register</a>
+    <a class="btn btn-default btn-danger btn-block"
+       href="login.html"
+       role="button">Cancel</a>
 </div>
 </body>
 </html>
