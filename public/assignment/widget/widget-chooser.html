@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Widget-Heading</title>
-    <link href="../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <title>Widget-Chooser</title>
+    <link href="../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="row">
-            <div class="navbar-header col-xs-12 col-sm-6 ">
+            <div class="navbar-header col-xs-9">
 
                 <div class="col-glyphicon-position">
                     <a class= "wdc-anchor-new" href="widget-list.html">
@@ -19,15 +19,15 @@
                     </a>
                 </div>
                 <div class="col-website-position">
-                    <a class="navbar-brand " href="widget-heading-editor.html">Widget Heading Editor</a>
+                    <a class="navbar-brand " href="widget-chooser.html">Widget Chooser</a>
                 </div>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <!--<div class="navbar-text pull-right col-xs-">-->
-            <!--&lt;!&ndash;<a class= "wdc-anchor-new" href="widget-chooser.html">&ndash;&gt;-->
-            <!--&lt;!&ndash;<span class="glyphicon glyphicon-plus pull-right"></span>&ndash;&gt;-->
-            <!--&lt;!&ndash;</a>&ndash;&gt;-->
-            <!--</div>&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
+            <div class="navbar-text pull-right col-xs-3">
+                <!--<a class= "wdc-anchor-new" href="widget-chooser.html">-->
+                <!--<span class="glyphicon glyphicon-plus pull-right"></span>-->
+                <!--</a>-->
+            </div><!-- /.navbar-collapse -->
         </div>
 
 
@@ -89,39 +89,63 @@
         </div>
         <div class="col-xs-12 col-lg-9 wbd-split-view-right">
             <div class="container-fluid">
-                <label for="name">Name</label>
-                <input id="name" class="form-control"/>
+                <ul class="list-group">
+                    <li class="list-group-item active">
+                        Choose Widgets
+                    </li>
+                    <a href="widget-heading-editor.html">
+                        <li class="list-group-item">Header</li>
+                    </a>
+
+                    <li class="list-group-item">Label</li>
 
 
-                <label for="text">Text</label>
-                <input id="text" class="form-control" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim a"/>
-                <label for="size">Size</label>
-                <select class="form-control" id="size">
-                    <option value="1">1 (X-Small)</option>
-                    <option value="2">2 (Small)</option>
-                    <option value="3">3 (Medium)</option>
-                    <option value="4">4 (Large)</option>
-                    <option value="5">5 (X-Large)</option>
-                    <option value="6">6 (XX-Large)</option>
-                </select>
+                    <li class="list-group-item">HTML</li>
 
-                <a class="btn btn-success btn-block" href="widget-list.html">Create</a>
-                <a class="btn btn-danger btn-block" href="widget-list.html">Delete</a>
+
+                    <li class="list-group-item">Text Input</li>
+
+
+                    <li class="list-group-item">Link</li>
+
+
+                    <li class="list-group-item">Button</li>
+
+                    <a href="widget-image-editor.html">
+                        <li class="list-group-item">Image</li>
+                    </a>
+
+                    <li class="list-group-item">Data Table</li>
+
+
+                    <li class="list-group-item">Repeater</li>
+
+                    <a href="widget-youtube-editor.html">
+                        <li class="list-group-item">Youtube</li>
+                    </a>
+
+
+
+                </ul>
+
+                <nav class="navbar navbar-default navbar-fixed-bottom">
+                    <div class="container-fluid">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a class= "wdc-anchor-new" href="../user/profile.html">
+                                <span class="glyphicon glyphicon-user pull-right"></span>
+                            </a></li>
+
+                        </ul>
+                    </div><!-- /.container-fluid -->
+                </nav>
+
             </div>
         </div>
     </div>
-
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a class= "wdc-anchor-new" href="profile.html">
-                    <span class="glyphicon glyphicon-user pull-right"></span>
-                </a></li>
-
-            </ul>
-        </div><!-- /.container-fluid -->
-    </nav>
-
 </div>
+
+
+
+
 </body>
 </html>
