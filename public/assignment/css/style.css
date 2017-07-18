@@ -4,8 +4,8 @@ margin-bottom: 5px;
 
 @media (min-width: 768px){
 .navbar-text {
-    margin-right: 0px;
-    margin-left: 0px;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 }
 body{
@@ -58,7 +58,7 @@ body{
     color: white;
     font-size: 20px;
 }
-.navbar-default .navbar-brand:hover, .glyphicon-ok:hover, .glyphicon-user:hover{
+.navbar-default .navbar-brand:hover, .glyphicon-ok:hover, .glyphicon-user:hover,.glyphicon-plus:hover{
     color: black;
 }
 
@@ -99,3 +99,14 @@ body{
 .wbd-widget {
     margin: 10px ;
 }
+
+.container-fluid.wbd-login-container{
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+.container-fluid.wbd-profile-container{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
