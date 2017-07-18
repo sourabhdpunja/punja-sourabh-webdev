@@ -58,7 +58,7 @@ body{
     color: white;
     font-size: 20px;
 }
-.navbar-default .navbar-brand:hover, .glyphicon-ok:hover, .glyphicon-user:hover,.glyphicon-plus:hover{
+.navbar-default .navbar-brand:hover, .glyphicon-ok:hover, .glyphicon-user:hover,.glyphicon-plus:hover,.glyphicon-eye-open:hover,.glyphicon-play:hover{
     color: black;
 }
 
