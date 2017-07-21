@@ -1,0 +1,103 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header col-xs-6">
+            <div class="row">
+                <!--<div class="col-glyphicon-position">-->
+                <!--<a class= "wdc-anchor-new"-->
+                <!--hrprofile.view.client.htmlhtml">-->
+                <!--<span class="glyphicon glyphicon-chevron-left"></span>-->
+                <!--</a>-->
+                <!--</div>-->
+                <div class="col-website-position">
+                    <a class="navbar-brand "
+                       href="profile.view.client.html">Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-text pull-right">
+            <a class= "navbar-link"
+               href="profile.view.client.html">
+                <span class="glyphicon glyphicon-ok pull-right"></span>
+            </a>
+        </div><!-- /.navbar-collapse -->
+
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+
+<div class="container-fluid wbd-profile-container">
+    <form>
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input name="firstName"
+                   ng-model="model.firstName"
+                   class="form-control"
+                   id="firstName"
+                   placeholder="First Name"/>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input name="lastName"
+                   ng-model="model.lastName"
+                   class="form-control"
+                   id="lastName"
+                   placeholder="Last Name"/>
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input name="username"
+                   ng-model="model.username"
+                   readonly
+                   class="form-control"
+                   id="username"
+                   value="alice"/>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input name="email"
+                   type="email"
+                   class="form-control"
+                   id="email"
+                   placeholder="alice@wonderland.com"/>
+        </div>
+        <div class="form-group">
+            <label for="dob">Date Of Birth</label>
+            <input name="dob"
+                   type="date"
+                   class="form-control"
+                   id="dob"
+                   placeholder="11/12/2017"/>
+        </div>
+    </form>
+    <a class="btn btn-default btn-primary btn-block"
+       href="../../website/website-list.html"
+       role="button">Websites</a>
+    <a class="btn btn-default btn-danger btn-block"
+       href="#!/login"
+       role="button">Logout</a>
+    <a class="btn btn-default btn-danger btn-block"
+       ng-click="model.unregister()"
+       role="button">Unregister</a>
+    <a class="btn btn-default btn-danger btn-block"
+       ng-click="model.updateUser()"
+       role="button">Update</a>
+
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="nav navbar-nav navbar-text pull-right">
+            <a class= "wdc-anchor-new"
+               href="../user/profile.html">
+                <span class="glyphicon glyphicon-user "></span>
+            </a>
+
+        </div>
+    </div><!-- /.container-fluid -->
+</nav>
+
+

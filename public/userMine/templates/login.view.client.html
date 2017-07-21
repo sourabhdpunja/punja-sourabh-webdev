@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link href="../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
-</head>
-<body>
+
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header col-xs-6">
-            <a class="navbar-brand"
-               href="login.html">Login</a>
+            <a class="navbar-brand navbar-brand"
+               href="login.view.client.html">Login</a>
 
         </div>
 
@@ -22,10 +14,12 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container-fluid wbd-login-container">
-
+<div class="container-fluid wbd-login-container" ng-controller="loginController">
+    <div>
+        sdfsdf
     <label for="username">Username</label>
     <input name="username"
+           ng-model="user.username"
            class="form-control"
            id="username"
            placeholder="username"/>
@@ -33,20 +27,20 @@
     <label for="password">Password</label>
     <input name="password"
            type="password"
+           ng-model="user.password"
            class="form-control"
            id="password"
            placeholder="password"/>
     <a class="btn btn-default btn-primary btn-block"
-       href="profile.html"
-       role="button">Login</a>
+       role="button"
+       ng-click ="login(user)">Login</a>
     <a class="btn btn-default btn-success btn-block"
-       href="register.html"
+       href="#!/register"
        role="button">Register</a>
+    </div>
 
     <nav class="navbar navbar-default navbar-fixed-bottom">
 
     </nav>
 
 </div>
-</body>
-</html>

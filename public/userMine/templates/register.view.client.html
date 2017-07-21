@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-    <link href="../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
-</head>
-<body>
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
@@ -15,13 +6,13 @@
             <div class="row">
                 <div class="col-glyphicon-position">
                     <a class= "wdc-anchor-new"
-                       href="login.html">
+                       href="login.view.client.html">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                     </a>
                 </div>
                 <div class="col-website-position">
                     <a class="navbar-brand "
-                       href="register.html">Register</a>
+                       href="register.view.client.html">Register</a>
                 </div>
             </div>
         </div>
@@ -35,6 +26,7 @@
     <form>
         <label for="username">Username</label>
         <input name="username"
+               ng-model="user.username"
                class="form-control"
                id="username"
                placeholder="username"/>
@@ -53,10 +45,10 @@
                placeholder="verify password"/>
     </form>
     <a class="btn btn-default btn-primary btn-block"
-       href="profile.html"
+       href="#!/profile"
        role="button">Register</a>
     <a class="btn btn-default btn-danger btn-block"
-       href="login.html"
+       href="#!/login"
        role="button">Cancel</a>
 
     <nav class="navbar navbar-default navbar-fixed-bottom">
@@ -64,5 +56,3 @@
     </nav>
 
 </div>
-</body>
-</html>
