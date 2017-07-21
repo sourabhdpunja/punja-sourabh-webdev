@@ -12,7 +12,7 @@
                 <!--</div>-->
                 <div class="col-website-position">
                     <a class="navbar-brand "
-                       href="profile.view.client.html">Profile</a>
+                       href="#!/profile/{{model.user._id}}">Profile</a>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="navbar-text pull-right">
             <a class= "navbar-link"
-               href="profile.view.client.html">
+               ng-click="model.updateUser(model.user)">
                 <span class="glyphicon glyphicon-ok pull-right"></span>
             </a>
         </div><!-- /.navbar-collapse -->
@@ -35,7 +35,7 @@
         <div class="form-group">
             <label for="firstName">First Name</label>
             <input name="firstName"
-                   ng-model="model.firstName"
+                   ng-model="model.user.firstName"
                    class="form-control"
                    id="firstName"
                    placeholder="First Name"/>
@@ -43,7 +43,7 @@
         <div class="form-group">
             <label for="lastName">Last Name</label>
             <input name="lastName"
-                   ng-model="model.lastName"
+                   ng-model="model.user.lastName"
                    class="form-control"
                    id="lastName"
                    placeholder="Last Name"/>
@@ -51,7 +51,7 @@
         <div class="form-group">
             <label for="username">Username</label>
             <input name="username"
-                   ng-model="model.username"
+                   ng-model="model.user.username"
                    readonly
                    class="form-control"
                    id="username"
@@ -75,7 +75,7 @@
         </div>
     </form>
     <a class="btn btn-default btn-primary btn-block"
-       href="../../website/website-list.html"
+       href="#!/user/{{model.user._id}}/website"
        role="button">Websites</a>
     <a class="btn btn-default btn-danger btn-block"
        href="#!/login"
@@ -83,9 +83,6 @@
     <a class="btn btn-default btn-danger btn-block"
        ng-click="model.unregister()"
        role="button">Unregister</a>
-    <a class="btn btn-default btn-danger btn-block"
-       ng-click="model.updateUser()"
-       role="button">Update</a>
 
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">

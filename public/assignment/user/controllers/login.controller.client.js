@@ -5,6 +5,7 @@
 /**
  * Created by Sourabh Punja on 7/17/2017.
  */
+
 (function (){
     //iife immediately invoked function expression
     angular
@@ -18,16 +19,16 @@
         model.login = login;
 
         function init() {
-            alert("zdfskjdf");
+            // alert("zdfskjdf");
         }
         init();
 
 
 
         function login(user) {
-            alert("zdfskjdf");
+            // alert("Here");
             if(!user) {
-                model.errorMessage = "User not found";
+                model.errorMessage = "Please input user";
                 return;
             }
             user = userService.findUserByUsernameAndPassword(user.username, user.password);

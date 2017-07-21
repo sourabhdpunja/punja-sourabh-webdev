@@ -20,11 +20,12 @@
 
         function init() {
             model.user = userService.findUserById(userId);
-        }
+            // console.log(model.user);
+    }
         init();
 
-        function updateUser() {
-
+        function updateUser(user) {
+            model.user = userService.updateUser(user._id,user);
         }
 
         function unregister() {

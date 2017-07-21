@@ -4,8 +4,8 @@
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header col-xs-6">
-            <a class="navbar-brand navbar-brand"
-               href="login.view.client.html">Login</a>
+            <a class="navbar-brand"
+               href="#!/login">Login</a>
 
         </div>
 
@@ -16,10 +16,6 @@
 
 <div class="container-fluid wbd-login-container">
     <div>
-        <div ng-show="model.user" class="alert alert-info">
-            Welcome back {{model.user.username}}
-        </div>
-
         <div ng-show="model.errorMessage" class="alert alert-danger">
             {{model.errorMessage}}
         </div>
@@ -39,7 +35,6 @@
                placeholder="password"/>
         <a class="btn btn-default btn-primary btn-block"
            ng-click="model.login(model.user)">Login</a>
-        {{model.user}}
         <a class="btn btn-default btn-success btn-block"
            href="#!/register"
            role="button">Register</a>

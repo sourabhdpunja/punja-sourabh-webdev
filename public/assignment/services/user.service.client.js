@@ -25,7 +25,7 @@
             for(var u in users) {
                 if(users[u]._id === userId) {
                     users[u] = user;
-                    return;
+                    return users[u];
                 }
             }
             return null;
