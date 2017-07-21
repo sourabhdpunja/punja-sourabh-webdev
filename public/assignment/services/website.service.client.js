@@ -20,12 +20,14 @@
         this.findWebsitesForUser = findWebsitesForUser;
         
         function findWebsitesForUser(userId) {
+            // console.log(userId);
             var sites=[];
             for(var w in websites){
                 if(websites[w].developerId === userId) {
                     sites.push(websites[w]);
                 }
             }
+            // console.log(sites);
             return sites;
         }
     }

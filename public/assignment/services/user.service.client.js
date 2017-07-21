@@ -17,9 +17,20 @@
             "findUserByUsernameAndPassword": findUserByUsernameAndPassword,
             "findUserById": findUserById,
             "registerUser": registerUser,
-            "updateUser": updateUser
+            "updateUser": updateUser,
+            "deleteUser": deleteUser
         };
         return api;
+
+        function deleteUser(userId){
+            for(var u in users) {
+                if (users[u]._id === userId) {
+                    var index = users.indexOf(users[u]);
+                    users.splice(index, 1);
+                    return;
+                }
+            }
+        }
 
         function updateUser(userId, user) {
             for(var u in users) {

@@ -11,12 +11,12 @@
         .module("WamApp")
         .controller("profileController",profileController);
 
-    function profileController($routeParams,userService) {
+    function profileController($routeParams,$location,userService) {
         var userId = $routeParams["userId"];
         var model = this;
 
         model.updateUser = updateUser;
-        model.unregister = unregister;
+        model.deleteUser = deleteUser;
 
         function init() {
             model.user = userService.findUserById(userId);
@@ -28,7 +28,9 @@
             model.user = userService.updateUser(user._id,user);
         }
 
-        function unregister() {
+        function deleteUser(user) {
+            model.user = userService.deleteUser(user._id);
+            $location.url("/login");
 
         }
 

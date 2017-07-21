@@ -14,7 +14,9 @@
 
         function init() {
             console.log("init");
+            //alert("reached weblist controller");
             model.websites = websiteService.findWebsitesForUser(model.userId);
+            // alert(model.websites);
             console.log(model.websites);
         }
         init();
