@@ -18,6 +18,16 @@
         ];
 
         this.findWebsitesForUser = findWebsitesForUser;
+        this.createWebsite = createWebsite;
+        this.updateWebsite= updateWebsite;
+        this.deleteWebsite= deleteWebsite;
+        this.findWebsiteById = findWebsiteById;
+
+        function findWebsiteById(websiteId){
+            return websites.find(function (website){
+               return website._id === websiteId;
+            });
+        }
         
         function findWebsitesForUser(userId) {
             // console.log(userId);
@@ -29,6 +39,30 @@
             }
             // console.log(sites);
             return sites;
+        }
+        function createWebsite(website){
+            website._id = (new Date()).getTime() + "";
+            websites.push(website);
+            return website;
+        }
+
+        function updateWebsite(websiteId,website){
+            for(var w in websites) {
+                if(websites[w]._id === websiteId) {
+                    websites[w] = website;
+                    return websites[w];
+                }
+            }
+            return null;
+        }
+        function deleteWebsite(websiteId){
+            for(var w in websites) {
+                if (websites[w]._id === websiteId) {
+                    var index = websites.indexOf(websites[w]);
+                    websites.splice(index, 1);
+                    return;
+                }
+            }
         }
     }
 })();

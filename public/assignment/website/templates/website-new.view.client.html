@@ -7,13 +7,13 @@
 
                 <div class="col-glyphicon-position">
                     <a class= "wdc-anchor-new"
-                       href="website-list.view.client.html">
+                       href="#!/user/{{model.userId}}/website">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                     </a>
                 </div>
                 <div class="col-website-position">
                     <a class="navbar-brand "
-                       href="website-new.view.client.html">New Website</a>
+                       href="#!/user/{{model.userId}}/website/new">New Website</a>
                 </div>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -37,208 +37,16 @@
                         <!--</div>-->
                     </div>
                 </li>
-                <li class="list-group-item">
+                <li ng-repeat="website in model.websites" class="list-group-item">
                     <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
+                        <div class="col-xs-10"> <a href="#!/user/{{model.userId}}/website/{{website._id}}/page">{{website.name}}</a></div>
                         <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
+                            <a href="#!/user/{{model.userId}}/website/{{website._id}}">
                                 <span class="glyphicon glyphicon-cog pull-right"></span>
                             </a>
                         </div>
                     </div>
                 </li>
-
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../page/templates/page-list.view.client.html">Wikipedia</a></div>
-                        <div class="col-xs-2">
-                            <a href="website-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-
 
             </ul>
         </div>
@@ -247,18 +55,20 @@
                 <label for="name">Name</label>
                 <input name="name"
                        class="form-control"
+                       ng-model="website.name"
                        id="name"
                        placeholder="Name"/>
 
                 <label for="description">Description</label>
                 <textarea name="description"
                           class="form-control"
+                          ng-model="website.description"
                           id="description"
                           placeholder="Description"
                           rows="5"></textarea>
             </form>
             <a class="btn btn-default btn-primary btn-block"
-               href="website-list.view.client.html"
+               ng-click="model.createWebsite(website)"
                role="button">Create</a>
             <a class="btn btn-default btn-danger btn-block"
                href="website-list.view.client.html"
@@ -271,7 +81,7 @@
         <div class="container-fluid">
             <div class="nav navbar-nav navbar-text pull-right">
                 <a class= "wdc-anchor-new"
-                   href="../../user/templates/profile.view.client.html">
+                   href="#!/profile/{{model.userId}}">
                     <span class="glyphicon glyphicon-user "></span>
                 </a>
 

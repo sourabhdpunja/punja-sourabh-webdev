@@ -28,9 +28,14 @@
                 controllerAs: "model"
             })
             .when("/user/:userId/website/new", {
-                templateUrl: "website/templates/website-new.view.client.html"
-                // controller: "websiteListController",
-                // controllerAs: "model"
+                templateUrl: "website/templates/website-new.view.client.html",
+                controller: "NewWebsiteController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/website/:websiteId", {
+                templateUrl: "website/templates/website-edit.view.client.html",
+                controller: "EditWebsiteController",
+                controllerAs: "model"
             })
             .when("/user/:userId/website/:wid/page",{
                 templateUrl: "page/templates/page-list.view.client.html",
