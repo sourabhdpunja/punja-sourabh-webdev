@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Page-New</title>
-    <link href="../../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../css/style.css" rel="stylesheet">
-</head>
-<body>
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
@@ -15,13 +6,13 @@
             <div class="row">
                 <div class="col-glyphicon-position">
                     <a class= "wdc-anchor-new"
-                       href="page-list.view.client.html">
+                       href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                     </a>
                 </div>
                 <div class="col-website-position">
                     <a class="navbar-brand"
-                       href="page-new.view.client.html">New Page</a>
+                       href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new">New Page</a>
                 </div>
             </div>
         </div>
@@ -49,209 +40,16 @@
                         <!--</div>-->
                     </div>
                 </li>
-                <li class="list-group-item">
+                <li ng-repeat="page in model.pages" class="list-group-item">
                     <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
+                        <div class="col-xs-10"><a href="#!/user/{{model.userId}}/website/{{page.websiteId}}/page/{{page._id}}/widget">{{page.name}}</a></div>
                         <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
+                            <a href="#!/user/{{model.userId}}/website/{{page.websiteId}}/page/{{page._id}}">
                                 <span class="glyphicon glyphicon-cog pull-right"></span>
                             </a>
                         </div>
                     </div>
                 </li>
-
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                        <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                        <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                        <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                        <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                        <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                        <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                        <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                        <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                        <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                        <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                        <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                        <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                        <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                        <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                        <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                        <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                        <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                        <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-xs-10"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                        <div class="col-xs-2">
-                            <a href="page-edit.view.client.html">
-                                <span class="glyphicon glyphicon-cog pull-right"></span>
-                            </a>
-                        </div>
-                    </div>
-                </li>
-
-
             </ul>
         </div>
         <div class="col-xs-12 col-lg-9 wbd-split-view-right">
@@ -259,20 +57,22 @@
                 <label for="name">Name</label>
                 <input name="name"
                        class="form-control"
+                       ng-model="page.name"
                        id="name"
                        placeholder="Name"/>
 
                 <label for="name">Title</label>
                 <input name="title"
                        class="form-control"
+                       ng-model="page.title"
                        id="title"
                        placeholder="Title"/>
             </form>
             <a class="btn btn-default btn-primary btn-block"
-               href="page-list.view.client.html"
+               ng-click="model.createPage(page)"
                role="button">Create</a>
             <a class="btn btn-default btn-danger btn-block"
-               href="page-list.view.client.html"
+               href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page"
                role="button">Cancel</a>
 
         </div>
@@ -282,7 +82,7 @@
         <div class="container-fluid">
             <div class="nav navbar-nav navbar-text pull-right">
                 <a class= "wdc-anchor-new"
-                   href="../../user/templates/profile.view.client.html">
+                   href="#!/profile/{{model.userId}}">
                     <span class="glyphicon glyphicon-user "></span>
                 </a>
 
@@ -291,5 +91,3 @@
     </nav>
 
 </div>
-</body>
-</html>

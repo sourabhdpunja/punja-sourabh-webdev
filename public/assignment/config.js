@@ -37,9 +37,34 @@
                 controller: "EditWebsiteController",
                 controllerAs: "model"
             })
-            .when("/user/:userId/website/:wid/page",{
+            .when("/user/:userId/website/:websiteId/page",{
                 templateUrl: "page/templates/page-list.view.client.html",
-                controller: "websiteListController",
+                controller: "PageListController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/website/:websiteId/page/new",{
+                templateUrl: "page/templates/page-new.view.client.html",
+                controller: "NewPageController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/website/:websiteId/page/:pageId",{
+                templateUrl: "page/templates/page-edit.view.client.html",
+                controller: "EditPageController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget",{
+                templateUrl: "widget/templates/widget-list.view.client.html",
+                controller: "WidgetListController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/new",{
+                templateUrl: "widget/templates/widget-chooser.view.client.html",
+                controller: "WidgetNewController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId",{
+                templateUrl: "widget/templates/widget-edit.view.client.html",
+                controller: "WidgetEditController",
                 controllerAs: "model"
             })
     }

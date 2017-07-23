@@ -1,0 +1,35 @@
+
+
+                <form>
+                    <label for="name">Name</label>
+                    <input id="name"
+                           class="form-control"
+                           placeholder="Name"
+                           ng-model="model.widget.widgetType"
+                           readonly/>
+
+
+                    <label for="text">Text</label>
+                    <input id="text"
+                           class="form-control"
+                           placeholder="Text"
+                           ng-model="model.widget.text"/>
+
+                    <label for="width">Width</label>
+                    <input id="width"
+                           class="form-control"
+                           ng-model="model.widget.width"/>
+
+                    <label for="url">URL</label>
+                    <input id="url"
+                           class="form-control"
+                           ng-model="model.widget.url"/>
+                </form>
+                <a class="btn btn-success btn-block"
+                   ng-click="model.createWidget(model.widget)">Upload Youtube</a>
+                <a class="btn btn-primary btn-block"
+                   ng-click="model.updateWidget(model.widget)">Update Youtube</a>
+                <a class="btn btn-danger btn-block"
+                   ng-click="model.deleteWidget(model.widgetId)">Delete Youtube</a>
+
+

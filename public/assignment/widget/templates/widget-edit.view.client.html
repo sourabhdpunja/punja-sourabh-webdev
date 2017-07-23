@@ -1,0 +1,66 @@
+
+<div ng-switch="model.widget.widgetType">
+    <div ng-switch-when="HEADING">
+        <div ng-include="'widget/templates/widget-header-heading.view.client.html'"></div>
+    </div>
+    <div ng-switch-when="IMAGE">
+        <div ng-include="'widget/templates/widget-header-image.view.client.html'"></div>
+    </div>
+    <div ng-switch-when="HTML">
+        <div ng-include="'widget/templates/widget-header-html.view.client.html'"></div>
+    </div>
+    <div ng-switch-when="YOUTUBE">
+        <div ng-include="'widget/templates/widget-header-youtube.view.client.html'"></div>
+    </div>
+</div>
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-3 visible-lg wbd-split-view-left">
+            <div class="container-fluid">
+                <div ng-repeat="widget in model.widgets" class="wbd-widget">
+                    <div ng-include="model.getWidgetUrlForType(widget.widgetType)"></div>
+
+                    <!--<div ng-switch="widget.widgetType">-->
+                    <!--<div ng-switch-when="HEADING">-->
+                    <!--<div ng-include="'widget/templates/widget-heading.view.client.html'"></div>-->
+                    <!--</div>-->
+                    <!--<div ng-switch-when="IMAGE">-->
+                    <!--<div ng-include="'widget/templates/widget-image.view.client.html'"></div>-->
+                    <!--</div>-->
+                    <!--<div ng-switch-when="HTML" ng-bind-html="model.trustThisContent(widget.text)">-->
+                    <!--</div>-->
+                    <!--<div ng-switch-when="YOUTUBE">-->
+                    <!--<div ng-include="'widget/templates/widget-youtube.view.client.html'"></div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-lg-9 wbd-split-view-right">
+            <div class="container-fluid">
+                <div ng-switch="model.widget.widgetType">
+                <div ng-switch-when="HEADING">
+                <div ng-include="'widget/templates/widget-heading-editor.view.client.html'"></div>
+                </div>
+                <div ng-switch-when="IMAGE">
+                <div ng-include="'widget/templates/widget-image-editor.view.client.html'"></div>
+                </div>
+                <<div ng-switch-when="HTML">
+                    <div ng-include="'widget/templates/widget-html-editor.view.client.html'"></div>
+                </div>
+                <div ng-switch-when="YOUTUBE">
+                <div ng-include="'widget/templates/widget-youtube-editor.view.client.html'"></div>
+                </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div ng-include="'views/common/footer.view.client.html'"></div>
+
+
+</div>

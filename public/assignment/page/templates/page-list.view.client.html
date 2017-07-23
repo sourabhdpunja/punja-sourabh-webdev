@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Page-List</title>
-    <link href="../../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../css/style.css" rel="stylesheet">
-</head>
-<body>
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -14,13 +6,13 @@
             <div class="row">
                 <div class="col-glyphicon-position">
                     <a class= "wdc-anchor-new"
-                       href="../../website/templates/website-list.view.client.html">
+                       href="#!/user/{{model.userId}}/website">
                         <span class="glyphicon glyphicon-chevron-left"></span>
                     </a>
                 </div>
                 <div class="col-website-position">
                     <a class="navbar-brand"
-                       href="page-list.view.client.html">Pages</a>
+                       href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">Pages</a>
                 </div>
             </div>
         </div>
@@ -28,7 +20,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="navbar-text pull-right">
             <a class= "navbar-link"
-               href="page-new.view.client.html">
+               href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new">
                 <span class="glyphicon glyphicon-plus pull-right wdc-anchor-new"></span>
             </a>
         </div><!-- /.navbar-collapse -->
@@ -45,223 +37,15 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li ng-repeat="page in model.pages" class="list-group-item">
             <div class="row">
                 <div class="col-xs-5">
-                    <a href="../../widget/widget-list.html">Lorem Ipsum</a>
+                    <a href="#!/user/{{model.userId}}/website/{{page.websiteId}}/page/{{page._id}}/widget">{{page.name}}</a>
                 </div>
                 <div class="col-xs-5 col-sm-4">2017-07-05</div>
                 <div class="col-sm-2 hidden-xs">689,789</div>
                 <div class="col-xs-2 col-sm-1">
-                    <a href="page-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-xs-5"><a href="../../widget/widget-list.html">Amazon</a></div>
-                <div class="col-xs-5 col-sm-4">2017-07-05</div>
-                <div class="col-sm-2 hidden-xs">689,789</div>
-                <div class="col-xs-2 col-sm-1">
-                    <a href="page-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-xs-5"><a href="../../widget/widget-list.html">Facebook</a></div>
-                <div class="col-xs-5 col-sm-4">2017-07-05</div>
-                <div class="col-sm-2 hidden-xs">689,789</div>
-                <div class="col-xs-2 col-sm-1">
-                    <a href="page-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-xs-5"><a href="../../widget/widget-list.html">Twitter</a></div>
-                <div class="col-xs-5 col-sm-4">2017-07-05</div>
-                <div class="col-sm-2 hidden-xs">689,789</div>
-                <div class="col-xs-2 col-sm-1">
-                    <a href="page-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-xs-5"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                <div class="col-xs-5 col-sm-4">2017-07-05</div>
-                <div class="col-sm-2 hidden-xs">689,789</div>
-                <div class="col-xs-2 col-sm-1">
-                    <a href="page-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-xs-5"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                <div class="col-xs-5 col-sm-4">2017-07-05</div>
-                <div class="col-sm-2 hidden-xs">689,789</div>
-                <div class="col-xs-2 col-sm-1">
-                    <a href="page-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-xs-5"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                <div class="col-xs-5 col-sm-4">2017-07-05</div>
-                <div class="col-sm-2 hidden-xs">689,789</div>
-                <div class="col-xs-2 col-sm-1">
-                    <a href="page-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-xs-5"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                <div class="col-xs-5 col-sm-4">2017-07-05</div>
-                <div class="col-sm-2 hidden-xs">689,789</div>
-                <div class="col-xs-2 col-sm-1">
-                    <a href="page-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-xs-5"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                <div class="col-xs-5 col-sm-4">2017-07-05</div>
-                <div class="col-sm-2 hidden-xs">689,789</div>
-                <div class="col-xs-2 col-sm-1">
-                    <a href="page-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-xs-5"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                <div class="col-xs-5 col-sm-4">2017-07-05</div>
-                <div class="col-sm-2 hidden-xs">689,789</div>
-                <div class="col-xs-2 col-sm-1">
-                    <a href="page-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-xs-5"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                <div class="col-xs-5 col-sm-4">2017-07-05</div>
-                <div class="col-sm-2 hidden-xs">689,789</div>
-                <div class="col-xs-2 col-sm-1">
-                    <a href="page-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-xs-5"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                <div class="col-xs-5 col-sm-4">2017-07-05</div>
-                <div class="col-sm-2 hidden-xs">689,789</div>
-                <div class="col-xs-2 col-sm-1">
-                    <a href="page-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-xs-5"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                <div class="col-xs-5 col-sm-4">2017-07-05</div>
-                <div class="col-sm-2 hidden-xs">689,789</div>
-                <div class="col-xs-2 col-sm-1">
-                    <a href="page-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-xs-5"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                <div class="col-xs-5 col-sm-4">2017-07-05</div>
-                <div class="col-sm-2 hidden-xs">689,789</div>
-                <div class="col-xs-2 col-sm-1">
-                    <a href="page-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-xs-5"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                <div class="col-xs-5 col-sm-4">2017-07-05</div>
-                <div class="col-sm-2 hidden-xs">689,789</div>
-                <div class="col-xs-2 col-sm-1">
-                    <a href="page-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-xs-5"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                <div class="col-xs-5 col-sm-4">2017-07-05</div>
-                <div class="col-sm-2 hidden-xs">689,789</div>
-                <div class="col-xs-2 col-sm-1">
-                    <a href="page-edit.view.client.html">
-                        <span class="glyphicon glyphicon-cog pull-right"></span>
-                    </a>
-                </div>
-            </div>
-        </li>
-
-        <li class="list-group-item">
-            <div class="row">
-                <div class="col-xs-5"><a href="../../widget/widget-list.html">Lorem Ipsum</a></div>
-                <div class="col-xs-5 col-sm-4">2017-07-05</div>
-                <div class="col-sm-2 hidden-xs">689,789</div>
-                <div class="col-xs-2 col-sm-1">
-                    <a href="page-edit.view.client.html">
+                    <a href="#!/user/{{model.userId}}/website/{{page.websiteId}}/page/{{page._id}}">
                         <span class="glyphicon glyphicon-cog pull-right"></span>
                     </a>
                 </div>
@@ -274,8 +58,8 @@
         <div class="container-fluid">
             <div class="nav navbar-nav navbar-text pull-right">
                 <a class= "wdc-anchor-new"
-                   href="../../user/templates/profile.view.client.html">
-                    <span class="glyphicon glyphicon-user "></span>
+                   href="#!/profile/{{model.userId}}">
+                    <span class="glyphicon glyphicon-user"></span>
                 </a>
 
             </div>
@@ -283,5 +67,3 @@
     </nav>
 
 </div>
-</body>
-</html>

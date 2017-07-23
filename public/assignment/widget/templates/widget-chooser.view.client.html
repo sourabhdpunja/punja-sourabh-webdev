@@ -1,0 +1,99 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="row">
+            <div class="navbar-header col-xs-12 col-sm-6">
+
+                <div class="col-glyphicon-position">
+                    <a class= "wdc-anchor-new" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                </div>
+                <div class="col-website-position">
+                    <a class="navbar-brand " href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">Widget Chooser</a>
+                </div>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <!--<div class="navbar-text pull-right col-xs-3">-->
+                <!--&lt;!&ndash;<a class= "wdc-anwidget-chooser.view.client.htmlget-chooser.html">&ndash;&gt;-->
+                <!--&lt;!&ndash;<span class="glyphicon glyphicon-plus pull-right"></span>&ndash;&gt;-->
+                <!--&lt;!&ndash;</a>&ndash;&gt;-->
+            <!--</div>&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
+        </div>
+
+
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-3 visible-lg wbd-split-view-left">
+            <div class="container-fluid">
+                <div ng-repeat="widget in model.widgets" class="wbd-widget">
+                    <div ng-include="model.getWidgetUrlForType(widget.widgetType)"></div>
+
+                    <!--<div ng-switch="widget.widgetType">-->
+                    <!--<div ng-switch-when="HEADING">-->
+                    <!--<div ng-include="'widget/templates/widget-heading.view.client.html'"></div>-->
+                    <!--</div>-->
+                    <!--<div ng-switch-when="IMAGE">-->
+                    <!--<div ng-include="'widget/templates/widget-image.view.client.html'"></div>-->
+                    <!--</div>-->
+                    <!--<div ng-switch-when="HTML" ng-bind-html="model.trustThisContent(widget.text)">-->
+                    <!--</div>-->
+                    <!--<div ng-switch-when="YOUTUBE">-->
+                    <!--<div ng-include="'widget/templates/widget-youtube.view.client.html'"></div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-lg-9 wbd-split-view-right">
+            <div class="container-fluid">
+                <ul class="list-group">
+                    <li class="list-group-item active">
+                        Choose Widgets
+                    </li>
+                    <a ng-click="model.createWidget('Header')"
+                        class = "pointer">
+                        <li class="list-group-item">Header</li>
+                    </a>
+
+                    <li class="list-group-item">Label</li>
+
+
+                    <li class="list-group-item">HTML</li>
+
+
+                    <li class="list-group-item">Text Input</li>
+
+
+                    <li class="list-group-item">Link</li>
+
+
+                    <li class="list-group-item">Button</li>
+
+                    <a ng-click="model.createWidget('Image')"
+                       class = "pointer">
+                        <li class="list-group-item">Image</li>
+                    </a>
+
+                    <a ng-click="model.createWidget('Youtube')"
+                       class = "pointer">
+                        <li class="list-group-item">Youtube</li>
+                    </a>
+
+
+
+                </ul>
+
+                <div ng-include="'views/common/footer.view.client.html'"></div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
