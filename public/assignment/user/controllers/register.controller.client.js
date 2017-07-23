@@ -10,6 +10,7 @@
     function registerController(userService, $location) {
         var model = this;
 
+
         model.registerUser = registerUser;
 
         function init() {

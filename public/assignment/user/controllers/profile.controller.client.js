@@ -12,14 +12,15 @@
         .controller("profileController",profileController);
 
     function profileController($routeParams,$location,userService) {
-        var userId = $routeParams["userId"];
+
         var model = this;
 
+        model.userId=$routeParams["userId"];
         model.updateUser = updateUser;
         model.deleteUser = deleteUser;
 
         function init() {
-            model.user = userService.findUserById(userId);
+            model.user = userService.findUserById(model.userId);
             // console.log(model.user);
     }
         init();

@@ -113,4 +113,7 @@ body{
 .pointer{
     cursor: pointer;
 }
+.wdc-padding-profile{
+    padding-right: 15px;
+}
 
