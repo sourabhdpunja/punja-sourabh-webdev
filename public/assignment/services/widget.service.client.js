@@ -34,8 +34,8 @@
 
         function deleteInvalidWidget(){
             for (var w in widgets){
-                console.log(typeof widgets[w].text);
-                console.log(typeof widgets[w].url);
+                // console.log(typeof widgets[w].text);
+                // console.log(typeof widgets[w].url);
                 if (typeof widgets[w].text === 'undefined' && widgets[w].widgetType === 'HEADING')
                 {
                     widgets.splice(w,1);
@@ -58,7 +58,7 @@
         function findWidgetByWidgetId(widgetId) {
             for (var w in widgets){
                 if (widgets[w]._id === widgetId){
-                    return widgets[w];
+                    return angular.copy(widgets[w]);
                 }
             }
         }

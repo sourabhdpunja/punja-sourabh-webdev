@@ -24,9 +24,10 @@
         this.findWebsiteById = findWebsiteById;
 
         function findWebsiteById(websiteId){
-            return websites.find(function (website){
+             var website = websites.find(function (website){
                return website._id === websiteId;
             });
+             return angular.copy(website);
         }
         
         function findWebsitesForUser(userId) {

@@ -36,6 +36,7 @@
 
         function updateWidget(widget){
             widgetService.updateWidget(model.widgetId,widget);
+            $location.url('/user/'+ model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
         }
 
         function deleteWidget(widgetId) {
@@ -69,7 +70,7 @@
         }
 
         function getWidgetUrlForType(type) {
-            return 'widget/templates/widget-'+type.toLowerCase()+'.view.client.html';
+            return 'views/widget/templates/widget-'+type.toLowerCase()+'.view.client.html';
         }
     }
     })();

@@ -24,6 +24,7 @@
         //implementation
         function updateWebsite(website){
             websiteService.updateWebsite( model.websiteId,website);
+            $location.url('/user/'+ model.userId + "/website");
         }
 
         function deleteWebsite(websiteId) {

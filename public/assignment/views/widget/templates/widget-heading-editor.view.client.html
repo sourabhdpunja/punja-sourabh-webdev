@@ -12,7 +12,8 @@
     <label for="text">Text</label>
     <input id="text"
            class="form-control"
-           ng-model="model.widget.text"/>
+           ng-model="model.widget.text"
+           ng-required="true"/>
 
     <label for="text">Size</label>
     <input id="size"
@@ -29,10 +30,11 @@
         <!--<option value="5">5 (X-Large)</option>-->
         <!--<option value="6">6 (XX-Large)</option>-->
     <!--</select>-->
-</form>
+
 <a class="btn btn-success btn-block"
    ng-click="model.createWidget(model.widget)">Create</a>
 <a class="btn btn-primary btn-block"
    ng-click="model.updateWidget(model.widget)">Update</a>
 <a class="btn btn-danger btn-block"
    ng-click="model.deleteWidget(model.widgetId)">Delete</a>
+</form>
