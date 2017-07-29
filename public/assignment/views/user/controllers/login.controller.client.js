@@ -12,7 +12,7 @@
         .module("WamApp")
         .controller("loginController",loginController);
 
-    function loginController($location, userService) {
+    function loginController($location, userService, $rootScope) {
         // JSON = Javascript Object Notation
         var model = this;
 
@@ -31,12 +31,17 @@
                 model.errorMessage = "Please input user";
                 return;
             }
-            user = userService.findUserByUsernameAndPassword(user.username, user.password);
-            if(user === null) {
-                model.errorMessage = "User not found";
-            } else {
-                $location.url("profile/"+user._id);
-            }
+            var promise = userService.findUserByUsernameAndPassword(user.username, user.password);
+            promise
+                .then(function(response){
+                    user = response.data;
+                    if(user === "0") {
+                        model.errorMessage = "User not found";
+                    } else {
+                        $rootScope.currentUser = user;
+                        $location.url("profile/"+user._id);
+                    }
+                });
         }
     }
 })();

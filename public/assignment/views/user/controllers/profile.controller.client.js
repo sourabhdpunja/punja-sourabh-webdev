@@ -20,13 +20,19 @@
         model.deleteUser = deleteUser;
 
         function init() {
-            model.user = userService.findUserById(model.userId);
+            userService.findUserById(model.userId)
+                .then(function (response){
+                    model.user = response.data;
+                });
             // console.log(model.user);
     }
         init();
 
         function updateUser(user) {
-            model.user = userService.updateUser(user._id,user);
+            userService.updateUser(user._id,user)
+                .then(function (response){
+                   model.user = response.data;
+                });
         }
 
         function deleteUser(user) {

@@ -15,7 +15,11 @@
         function init() {
             console.log("init");
             //alert("reached weblist controller");
-            model.websites = websiteService.findWebsitesForUser(model.userId);
+            websiteService
+                .findWebsitesForUser(model.userId)
+                .then(function (websites){
+                model.websites = websites;
+                });
             // alert(model.websites);
             console.log(model.websites);
         }
