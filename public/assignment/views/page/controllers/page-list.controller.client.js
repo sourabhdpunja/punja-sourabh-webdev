@@ -12,9 +12,13 @@
         model.websiteId = $routeParams.websiteId;
 
         function init(){
-            model.pages = pageService.findAllPagesByWebsiteId(model.websiteId)
+            pageService
+                .findAllPagesByWebsiteId(model.userId,model.websiteId)
+                .then(function (pages){
+                    model.pages=  pages;
+                });
+            // model.pages = pageService.findAllPagesByWebsiteId(model.websiteId)
         }
         init();
-
     }
 })();

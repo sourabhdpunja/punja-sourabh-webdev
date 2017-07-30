@@ -14,15 +14,24 @@
         model.createWebsite = createWebsite;
 
         function init() {
-            model.websites = websiteService.findWebsitesForUser(model.userId);
+            websiteService
+                .findWebsitesForUser(model.userId)
+                .then(function (websites){
+                    model.websites = websites;
+                });
         }
         init();
 
         //implementation
         function createWebsite(website){
-            website.developerId = model.userId;
-            websiteService.createWebsite(website);
-            $location.url('/user/'+ model.userId + "/website");
+            // website.developerId = model.userId;
+            // websiteService.createWebsite(website);
+            // $location.url('/user/'+ model.userId + "/website");
+            websiteService
+                .createWebsite(model.userId,website)
+                .then(function (website){
+                    $location.url('/user/'+ model.userId + "/website");
+                });
         }
     }
 })();

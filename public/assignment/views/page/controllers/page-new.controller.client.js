@@ -14,14 +14,20 @@
 
         model.createPage= createPage;
         function init() {
-            model.pages = pageService.findAllPagesByWebsiteId(model.websiteId);
+            pageService
+                .findAllPagesByWebsiteId(model.userId,model.websiteId)
+                .then(function (pages){
+                    model.pages=  pages;
+                });
+            // model.pages = pageService.findAllPagesByWebsiteId(model.websiteId);
         }
         init();
 
         function createPage(page){
-            page.websiteId = model.websiteId;
-            pageService.createPage(page);
-            $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page")
+            pageService.createPage(model.userId,model.websiteId,page)
+                .then(function(){
+                    $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page");
+                });
         }
     }
 

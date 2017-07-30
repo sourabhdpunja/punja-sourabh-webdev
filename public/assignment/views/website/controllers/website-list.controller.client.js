@@ -13,15 +13,15 @@
 
 
         function init() {
-            console.log("init");
+            // console.log("init");
             //alert("reached weblist controller");
             websiteService
                 .findWebsitesForUser(model.userId)
                 .then(function (websites){
-                model.websites = websites;
+                     model.websites = websites;
                 });
             // alert(model.websites);
-            console.log(model.websites);
+            // console.log(model.websites);
         }
         init();
     }

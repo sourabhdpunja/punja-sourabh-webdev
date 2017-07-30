@@ -18,32 +18,38 @@
 
         model.createWidget=createWidget;
         function init(){
-            var widgetlist = widgetService.findAllWidgetsForThePage(model.pageId);
-            for (var w in widgetlist){
-                if (typeof widgetlist[w].text === 'undefined' && widgetlist[w].widgetType === 'HEADING')
-                {
-                    widgetlist.splice(w,1);
-                    break;
-                }
-                else if (typeof widgetlist[w].url === 'undefined' && widgetlist[w].widgetType === 'IMAGE')
-                {
-                    widgetlist.splice(w,1);
-                    break;
-                }
-                else if (typeof widgetlist[w].url === 'undefined' && widgetlist[w].widgetType === 'YOUTUBE')
-                {
-                    widgetlist.splice(w,1);
-                    break;
-                }
-                else{
-                    continue;
-                }
-            }
-            model.widgets = widgetlist;
+            widgetService
+                .findAllWidgetsForThePage(model.userId,model.websiteId,model.pageId)
+                .then(function (widgetlist){
+                    model.widgets=widgetlist;
+                });
+            // var widgetlist = widgetService.findAllWidgetsForThePage(model.pageId);
+            // for (var w in widgetlist){
+            //     if (typeof widgetlist[w].text === 'undefined' && widgetlist[w].widgetType === 'HEADING')
+            //     {
+            //         widgetlist.splice(w,1);
+            //         break;
+            //     }
+            //     else if (typeof widgetlist[w].url === 'undefined' && widgetlist[w].widgetType === 'IMAGE')
+            //     {
+            //         widgetlist.splice(w,1);
+            //         break;
+            //     }
+            //     else if (typeof widgetlist[w].url === 'undefined' && widgetlist[w].widgetType === 'YOUTUBE')
+            //     {
+            //         widgetlist.splice(w,1);
+            //         break;
+            //     }
+            //     else{
+            //         continue;
+            //     }
+            // }
+            // model.widgets = widgetlist;
         }
         init();
         var widget ={};
         function createWidget(Type) {
+
             switch (Type){
                 case 'Header':
                     widget.widgetType ='HEADING';
@@ -56,8 +62,12 @@
                     break;
             }
             widget.pageId = model.pageId;
-            widget = widgetService.createWidget(widget);
-            $location.url('/user/'+ model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/" + widget._id);
+            // widget = widgetService.createWidget(widget);
+            widgetService.createWidget(model.userId,model.websiteId,model.pageId,widget)
+                .then(function (widget){
+                    $location.url('/user/'+ model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/" + widget._id);
+                })
+            // $location.url('/user/'+ model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/" + widget._id);
         }
 
         function trustThisContent(html){

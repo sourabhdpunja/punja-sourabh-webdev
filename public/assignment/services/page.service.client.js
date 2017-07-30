@@ -6,13 +6,7 @@
         .module("WamApp")
         .factory("pageService",pageService);
 
-    function pageService() {
-
-        var pages=[
-            { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
-            { "_id": "432", "name": "Post 2", "websiteId": "456", "description": "Lorem" },
-            { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }
-        ];
+    function pageService($http) {
 
         var api= {
             "findAllPagesByWebsiteId": findAllPagesByWebsiteId,
@@ -24,46 +18,71 @@
 
         return api;
 
-        function findAllPagesByWebsiteId(websiteId){
-            var pagelist=[];
-            for (var p in pages){
-                if (pages[p].websiteId === websiteId){
-                    pagelist.push(pages[p]);
-                }
-            }
-            return pagelist;
+        function findAllPagesByWebsiteId(userId,websiteId){
+            var url = "/api/user/"+userId+ "/website/"+websiteId+"/page";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+            // var pagelist=[];
+            // for (var p in pages){
+            //     if (pages[p].websiteId === websiteId){
+            //         pagelist.push(pages[p]);
+            //     }
+            // }
+            // return pagelist;
         }
 
-        function findPageById(pageId){
-            for (var p in pages){
-                if (pages[p]._id === pageId){
-                    return angular.copy(pages[p]);
-                }
-            }
+        function findPageById(userId,websiteId,pageId){
+            var url = "/api/user/"+userId+"/website/"+websiteId+"/page/"+pageId;
+            return $http.get(url)
+                .then(function (response){
+                   return response.data;
+                });
+            // for (var p in pages){
+            //     if (pages[p]._id === pageId){
+            //         return angular.copy(pages[p]);
+            //     }
+            // }
         }
 
-        function createPage(page){
-            page._id = (new Date()).getTime() + "";
-            pages.push(page);
-            return page;
+        function createPage(userId,websiteId,page){
+            var url = "/api/user/"+userId+"/website/"+websiteId+"/page";
+            return $http.post(url,page)
+                .then(function(response){
+                   return response.data;
+                });
+            // page._id = (new Date()).getTime() + "";
+            // pages.push(page);
+            // return page;
         }
 
-        function updatePage(pageId,page){
-            for (var p in pages){
-                if (pages[p]._id === pageId){
-                    pages[p]=page;
-                    return pages[p];
-                }
-            }
+        function updatePage(userId,websiteId,pageId,page){
+            var url = "/api/user/"+userId+"/website/"+websiteId+"/page/"+pageId;
+            return $http.put(url,page)
+                .then(function(response){
+                   return response.data;
+                });
+            // for (var p in pages){
+            //     if (pages[p]._id === pageId){
+            //         pages[p]=page;
+            //         return pages[p];
+            //     }
+            // }
         }
 
-        function deletePage(pageId) {
-            for (var p in pages) {
-                if (pages[p]._id === pageId) {
-                pages.splice(p,1);
-                return;
-                }
-            }
+        function deletePage(userId,websiteId,pageId) {
+            var url = "/api/user/"+userId+"/website/"+websiteId+"/page/"+pageId;
+            return $http.delete(url)
+                .then(function(response){
+                    return response.data;
+                });
+            // for (var p in pages) {
+            //     if (pages[p]._id === pageId) {
+            //     pages.splice(p,1);
+            //     return;
+            //     }
+            // }
         }
 
     }

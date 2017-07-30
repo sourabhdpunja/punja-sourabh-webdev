@@ -22,26 +22,48 @@
         model.deleteWidget= deleteWidget;
 
         function init(){
-            model.widget = widgetService.findWidgetByWidgetId(model.widgetId);
-            model.widgets = widgetService.findAllWidgetsForThePage(model.pageId);
+            widgetService
+                .findWidgetByWidgetId(model.userId,model.websiteId,model.pageId,model.widgetId)
+                .then(function (widget){
+                    model.widget=widget;
+                });
+            // model.widget = widgetService.findWidgetByWidgetId(model.widgetId);
+            widgetService
+                .findAllWidgetsForThePage(model.userId,model.websiteId,model.pageId)
+                .then(function (widgetlist){
+                    model.widgets=widgetlist;
+                });
+            // model.widgets = widgetService.findAllWidgetsForThePage(model.pageId);
 
         }
         init();
 
         function createWidget(widget){
             widget.pageId = model.pageId;
-            widgetService.createWidget(widget);
-            $location.url('/user/'+ model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
+            widgetService.createWidget(model.userId,model.websiteId,model.pageId,widget)
+                .then(function (widget){
+                    $location.url('/user/'+ model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
+                });
+            // widgetService.createWidget(widget);
+            // $location.url('/user/'+ model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
         }
 
         function updateWidget(widget){
-            widgetService.updateWidget(model.widgetId,widget);
-            $location.url('/user/'+ model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
+            widgetService.updateWidget(model.userId,model.websiteId,model.pageId,model.widgetId,widget)
+                .then(function (widget){
+                    $location.url('/user/'+ model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
+                });
+            // widgetService.updateWidget(model.widgetId,widget);
+            // $location.url('/user/'+ model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
         }
 
         function deleteWidget(widgetId) {
-            widgetService.deleteWidget(widgetId);
-            $location.url('/user/'+ model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
+            widgetService.deleteWidget(model.userId,model.websiteId,model.pageId,widgetId)
+                .then(function (){
+                    $location.url('/user/'+ model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
+                });
+            // widgetService.deleteWidget(widgetId);
+            // $location.url('/user/'+ model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/");
         }
 
         function getBackPositionUrl(Type){

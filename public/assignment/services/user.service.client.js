@@ -16,13 +16,18 @@
         return api;
 
         function deleteUser(userId){
-            for(var u in users) {
-                if (users[u]._id === userId) {
-                    var index = users.indexOf(users[u]);
-                    users.splice(index, 1);
-                    return;
-                }
-            }
+            var url = "/api/user/"+userId;
+            return $http.delete(url)
+                .then(function (response){
+                   return response.data;
+                });
+            // for(var u in users) {
+            //     if (users[u]._id === userId) {
+            //         var index = users.indexOf(users[u]);
+            //         users.splice(index, 1);
+            //         return;
+            //     }
+            // }
         }
 
         function updateUser(userId, user) {

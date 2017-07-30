@@ -17,25 +17,30 @@
 
 
         function init() {
-            var widgetlist = widgetService.findAllWidgetsForThePage(model.pageId);
-            for (var w in widgetlist){
-                        if (typeof widgetlist[w].text === 'undefined' && widgetlist[w].widgetType === 'HEADING')
-                        {
-                            widgetlist.splice(w,1);
-                        }
-                        else if (typeof widgetlist[w].url === 'undefined' && widgetlist[w].widgetType === 'IMAGE')
-                        {
-                            widgetlist.splice(w,1);
-                        }
-                        else if (typeof widgetlist[w].url === 'undefined' && widgetlist[w].widgetType === 'YOUTUBE')
-                        {
-                            widgetlist.splice(w,1);
-                        }
-                        else{
-                            continue;
-                        }
-            }
-            model.widgets = widgetlist;
+            widgetService
+                .findAllWidgetsForThePage(model.userId,model.websiteId,model.pageId)
+                .then(function (widgetlist){
+                    model.widgets=widgetlist;
+                });
+            // var widgetlist = widgetService.findAllWidgetsForThePage(model.pageId);
+            // for (var w in widgetlist){
+            //             if (typeof widgetlist[w].text === 'undefined' && widgetlist[w].widgetType === 'HEADING')
+            //             {
+            //                 widgetlist.splice(w,1);
+            //             }
+            //             else if (typeof widgetlist[w].url === 'undefined' && widgetlist[w].widgetType === 'IMAGE')
+            //             {
+            //                 widgetlist.splice(w,1);
+            //             }
+            //             else if (typeof widgetlist[w].url === 'undefined' && widgetlist[w].widgetType === 'YOUTUBE')
+            //             {
+            //                 widgetlist.splice(w,1);
+            //             }
+            //             else{
+            //                 continue;
+            //             }
+            // }
+            // model.widgets = widgetlist;
         }
         init();
 

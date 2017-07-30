@@ -16,20 +16,34 @@
         model.deleteWebsite = deleteWebsite;
 
         function init() {
-            model.websites = websiteService.findWebsitesForUser(model.userId);
-            model.website = websiteService.findWebsiteById(model.websiteId);
+            websiteService
+                .findWebsitesForUser(model.userId)
+                .then(function (websites){
+                    model.websites = websites;
+                });
+            websiteService
+                .findWebsiteById(model.userId,model.websiteId)
+                .then(function (website){
+                    model.website = website;
+                });
         }
         init();
 
         //implementation
         function updateWebsite(website){
-            websiteService.updateWebsite( model.websiteId,website);
-            $location.url('/user/'+ model.userId + "/website");
+            websiteService
+                .updateWebsite(model.userId,model.websiteId,website)
+                .then(function (){
+                    $location.url('/user/'+ model.userId + "/website");
+                });
         }
 
         function deleteWebsite(websiteId) {
-            websiteService.deleteWebsite(websiteId);
-            $location.url('/user/'+ model.userId + "/website");
+            websiteService
+                .deleteWebsite(model.userId,websiteId)
+                .then(function (){
+                $location.url('/user/'+ model.userId + "/website");
+            });
         }
 
     }

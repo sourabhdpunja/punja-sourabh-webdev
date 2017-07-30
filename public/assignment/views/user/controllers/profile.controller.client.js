@@ -36,11 +36,12 @@
         }
 
         function deleteUser(user) {
-            model.user = userService.deleteUser(user._id);
-            $location.url("/login");
-
+            // model.user = userService.deleteUser(user._id);
+            // $location.url("/login");
+            userService.deleteUser(user._id)
+                .then(function (){
+                   $location.url("/login");
+                });
         }
-
-
     }
 })();

@@ -16,19 +16,34 @@
         model.deletePage = deletePage;
 
         function init(){
-        model.pages=pageService.findAllPagesByWebsiteId(model.websiteId);
-        model.page = pageService.findPageById(model.pageId);
+            pageService
+                .findAllPagesByWebsiteId(model.userId,model.websiteId)
+                .then(function (pages){
+                    model.pages=  pages;
+                });
+            pageService
+                .findPageById(model.userId,model.websiteId,model.pageId)
+                .then(function (page){
+                    model.page= page;
+                });
         }
         init();
 
         function updatePage(page) {
-            pageService.updatePage(model.pageId,page);
-            $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page");
+            pageService
+                .updatePage(model.userId,model.websiteId,model.pageId,page)
+                .then(function (page){
+                $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page");
+            });
+
         }
 
         function deletePage(pageId){
-            pageService.deletePage(pageId);
-            $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page");
+            pageService
+                .deletePage(model.userId,model.websiteId,model.pageId)
+                .then(function (){
+                    $location.url("/user/"+model.userId+"/website/"+model.websiteId+"/page");
+                });
         }
     }
 
