@@ -1,7 +1,7 @@
 
 
 
-                <form>
+                <!--<form>-->
                 <label for="name">Name</label>
                 <input id="name"
                        class="form-control"
@@ -27,17 +27,42 @@
                        class="form-control"
                        ng-model="model.widget.url"/>
                 <label for="file">File Upload</label>
-                <div class="row">
-                    <div class="col-xs-12">
+                <!--<div class="row">-->
+                    <!--<div class="col-xs-12">-->
 
-                        <input id="file"
-                               class="form-control"
-                               multiple type="file"/>
+                        <!--<input id="file"-->
+                               <!--class="form-control"-->
+                               <!--multiple type="file"/>-->
+                    <!--</div>-->
+
+
+                <!--</div>-->
+
+
+                    <form action="/api/upload"  method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-xs-9">
+
+                            <!--<input id="file" class="form-control" multiple type="file"/>-->
+
+                                <input  name="myFile"    id = "file" type="file" class="form-control" required="required"/>
+                                <input  name="width"     value="{{model.widget.width}}" style="display: none"/>
+                                <input  name="userId"    value="{{model.userId}}"       style="display: none"/>
+                                <input  name="websiteId" value="{{model.websiteId}}"    style="display: none"/>
+                                <input  name="pageId"    value="{{model.pageId}}"       style="display: none"/>
+                                <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
+                                <input  name="widgetType"  value="{{model.widget.widgetType}}"   style="display: none"/>
+                                <!--<button type="submit"    class="btn btn-block btn-primary">Upload Image</button>-->
+
+                        </div>
+                        <div class="col-xs-3">
+                            <!--<a type="submit" class="btn btn-block btn-primary">Upload Image</a>-->
+                            <button type="submit" class="btn btn-block btn-primary">Upload Image</button>
+                        </div>
+
                     </div>
-
-
-                </div>
-                </form>
+                    </form>
+                <!--</form>-->
                 <a class="btn btn-success btn-block"
                    ng-click="model.createWidget(model.widget)">Create Image</a>
                 <a class="btn btn-primary btn-block"

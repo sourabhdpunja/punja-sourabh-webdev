@@ -1,7 +1,7 @@
 /**
  * Created by Sourabh Punja on 7/28/2017.
  */
-var app = require("../express");
+var app = require("../../express");
 
 var users = [
     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },

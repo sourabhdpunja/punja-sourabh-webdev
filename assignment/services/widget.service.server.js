@@ -1,7 +1,9 @@
 /**
  * Created by Sourabh Punja on 7/30/2017.
  */
-var app = require("../express");
+var app = require("../../express");
+var multer = require('multer'); // npm install multer --save
+var upload = multer({ dest: __dirname+'/../../public/uploads' });
 
 var widgets = [
     { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
@@ -20,6 +22,53 @@ app.get("/api/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", fi
 app.post("/api/user/:userId/website/:websiteId/page/:pageId/widget", createWidget);
 app.put("/api/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", updateWidget);
 app.delete("/api/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", deleteWidget);
+app.post("/api/upload",upload.single('myFile'), uploadImage);
+
+function uploadImage(req, res) {
+
+    var widgetId      = req.body.widgetId;
+    var width         = req.body.width;
+    var widgetType    = req.body.widgetType;
+    var myFile        = req.file;
+
+    var userId        = req.body.userId;
+    var websiteId     = req.body.websiteId;
+    var pageId        = req.body.pageId;
+
+    var originalname  = myFile.originalname; // file name on user's computer
+    var filename      = myFile.filename;     // new file name in upload folder
+    var path          = myFile.path;         // full path of uploaded file
+    var destination   = myFile.destination;  // folder where file is saved to
+    var size          = myFile.size;
+    var mimetype      = myFile.mimetype;
+
+    var widget = getWidgetById(pageId,widgetId,widgetType);
+    widget.url = '/uploads/'+filename;
+
+    // var callbackUrl   = "/assignment/#/user/"+userId+"/website/"+websiteId;
+    var callbackUrl = "/assignment/#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
+    // var callbackUrl = "/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
+
+    res.redirect(callbackUrl);
+}
+
+function getWidgetById(pageId,widgetId,widgetType){
+    for (var w in widgets){
+        if (widgets[w]._id === widgetId){
+            return widgets[w];
+        }
+    }
+    var widget = {};
+    widget._id = widgetId;
+    widget.pageId= pageId;
+    widget.widgetType = widgetType;
+    widgets.push(widget);
+    widgets = widgets.filter( function( eachobject, id, filteredArray ) {
+        return filteredArray.indexOf(eachobject) == id;
+    });
+
+    return widget;
+}
 
 function deleteWidget(req,res) {
     var userId = req.params.userId;
@@ -103,11 +152,11 @@ function deleteInvalidWidget(){
         {
             widgets.splice(w,1);
         }
-        else if (typeof widgets[w].url === 'undefined' && widgets[w].widgetType === 'IMAGE')
+        else if ((typeof widgets[w].url === 'undefined' || typeof widgets[w].width === 'undefined') && widgets[w].widgetType === 'IMAGE')
         {
             widgets.splice(w,1);
         }
-        else if (typeof widgets[w].url === 'undefined' && widgets[w].widgetType === 'YOUTUBE')
+        else if (typeof widgets[w].url === 'undefined' && widgets[w].width === 'undefined' && widgets[w].widgetType === 'YOUTUBE')
         {
             widgets.splice(w,1);
         }
