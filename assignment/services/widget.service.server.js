@@ -23,6 +23,16 @@ app.post("/api/user/:userId/website/:websiteId/page/:pageId/widget", createWidge
 app.put("/api/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", updateWidget);
 app.delete("/api/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", deleteWidget);
 app.post("/api/upload",upload.single('myFile'), uploadImage);
+app.put("/api/page/:pageId/widget",sortWidgets);
+
+function sortWidgets(req,res){
+    var pageId = req.params.pageId;
+    var start= req.query.start;
+    var end= req.query.end;
+    widgets.splice(end,0,widgets.splice(start,1)[0]);
+    res.sendStatus(200);
+    // console.log([start, end]);
+}
 
 function uploadImage(req, res) {
 

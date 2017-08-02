@@ -14,7 +14,8 @@
             "createWidget": createWidget,
             "deleteWidget": deleteWidget,
             "updateWidget": updateWidget,
-            "findWidgetByWidgetId": findWidgetByWidgetId
+            "findWidgetByWidgetId": findWidgetByWidgetId,
+            "sort": sort
             // "deleteInvalidWidget": deleteInvalidWidget
         };
 
@@ -42,6 +43,18 @@
         //     }
         //     return widgets;
         // }
+
+        function sort(pageId,start,end){
+            var url = "/api/page/"+pageId+"/widget?start=START&end=END";
+            url = url
+                .replace("START",start)
+                .replace("END",end);
+            // return $http.put(url)
+            //     .then(function(response){
+            //         return response.data;
+            //     })
+            $http.put(url);
+        }
 
         function findWidgetByWidgetId(userId,websiteId,pageId,widgetId) {
             var url = "/api/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
