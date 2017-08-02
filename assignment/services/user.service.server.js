@@ -33,9 +33,16 @@ function deleteUser(req, res) {
 function updateUser(req, res){
     var userId = req.params.userId;
     var user = req.body;
+    // console.log(typeof user.dob);
     for(var u in users) {
         if(users[u]._id === userId) {
+            // if (typeof user.dob !== 'undefined'){
+            //     user.dob = new Date(user.dob);
+            //     // var parts =user.dob.split('-');
+            //     // user.dob = new Date(parts[2],parts[0]-1,parts[1]);
+            // }
             users[u] = user;
+            // console.log(typeof users[u].dob);
             res.send(users[u]);
             return;
         }
@@ -80,6 +87,9 @@ function getUserById(req,response){
     for(var u in users){
         console.log(users);
         if (users[u]._id === req.params.userId){
+            // if (typeof users[u].date !== 'undefined'){
+            //     users[u].toISOString().split("T")[0];
+            // }
             response.send(users[u]);
         }
     }

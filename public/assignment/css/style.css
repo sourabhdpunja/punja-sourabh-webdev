@@ -18,7 +18,8 @@ body{
     border-color: #262d4c;
 }
 
-.navbar-default .navbar-brand {
+.navbar-default .navbar-brand,
+.navbar-default a.navbar-brand:visited{
     color: white;
 }
 .wdc-anchor-new {
@@ -116,4 +117,6 @@ body{
 .wdc-padding-profile{
     padding-right: 15px;
 }
-
+.navbar-default a.navbar-brand:hover{
+    color:black;
+}
