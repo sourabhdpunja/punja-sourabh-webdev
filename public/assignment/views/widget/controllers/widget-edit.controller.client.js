@@ -25,6 +25,10 @@
             widgetService
                 .findWidgetByWidgetId(model.userId,model.websiteId,model.pageId,model.widgetId)
                 .then(function (widget){
+                    if (widget.widgetType ==='HEADING' && typeof widget.size !== 'undefined' )
+                    {
+                        widget.size= widget.size.toString();
+                    };
                     model.widget=widget;
                 });
             // model.widget = widgetService.findWidgetByWidgetId(model.widgetId);
