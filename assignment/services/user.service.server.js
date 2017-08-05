@@ -2,6 +2,7 @@
  * Created by Sourabh Punja on 7/28/2017.
  */
 var app = require("../../express");
+var userModel = require("../models/user/user.model.server")
 
 var users = [
     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
@@ -50,10 +51,16 @@ function updateUser(req, res){
     res.sendStatus(404);
 }
 function registerUser(req, res) {
+    console.log("user is inside");
     var user = req.body;
-    user._id = (new Date()).getTime() + "";
-    users.push(user);
-    res.send(user);
+    userModel
+        .createUser(user)
+        .then(function (user){
+            res.json(user);
+        });
+
+    // user._id = (new Date()).getTime() + "";
+    // users.push(user);
 }
 
 function findUser(req,response){
