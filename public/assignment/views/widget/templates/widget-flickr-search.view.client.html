@@ -1,0 +1,106 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="row">
+            <div class="navbar-header col-xs-12 col-sm-6">
+
+                <div class="col-glyphicon-position">
+                    <a class= "wdc-anchor-new" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                </div>
+                <div class="col-website-position">
+                    <a class="navbar-brand " href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{model.widgetId}}/search">Image Search</a>
+                </div>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <!--<div class="navbar-text pull-right col-xs-3">-->
+            <!--&lt;!&ndash;<a class= "wdc-anwidget-chooser.view.client.htmlget-chooser.html">&ndash;&gt;-->
+            <!--&lt;!&ndash;<span class="glyphicon glyphicon-plus pull-right"></span>&ndash;&gt;-->
+            <!--&lt;!&ndash;</a>&ndash;&gt;-->
+            <!--</div>&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
+        </div>
+
+
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-3 visible-lg wbd-split-view-left">
+            <div class="container-fluid">
+                <div ng-repeat="widget in model.widgets" class="wbd-widget">
+                    <div ng-include="model.getWidgetUrlForType(widget.widgetType)"></div>
+
+                    <!--<div ng-switch="widget.widgetType">-->
+                    <!--<div ng-switch-when="HEADING">-->
+                    <!--<div ng-include="'widget/templates/widget-heading.view.client.html'"></div>-->
+                    <!--</div>-->
+                    <!--<div ng-switch-when="IMAGE">-->
+                    <!--<div ng-include="'widget/templates/widget-image.view.client.html'"></div>-->
+                    <!--</div>-->
+                    <!--<div ng-switch-when="HTML" ng-bind-html="model.trustThisContent(widget.text)">-->
+                    <!--</div>-->
+                    <!--<div ng-switch-when="YOUTUBE">-->
+                    <!--<div ng-include="'widget/templates/widget-youtube.view.client.html'"></div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-lg-9 wbd-split-view-right">
+            <div class="container-fluid">
+                <div class="input-group">
+                    <input ng-model="searchText"
+                           type="text"
+                           class="form-control">
+                    <span class="input-group-btn">
+        <a ng-click="model.searchPhotos(searchText)"
+           class="btn btn-default"
+           type="button">
+            <span class="glyphicon glyphicon-search"></span>
+        </a>
+    </span>
+                </div>
+                <!--{{model.photos}}-->
+                <div class="row">
+                    <div class="col-xs-4" ng-repeat="photo in model.photos.photo">
+                        <img ng-click="model.selectPhoto(photo)"
+                             ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"
+                             class ="pointer"/>
+                    </div>
+                </div>
+
+
+                <div ng-include="'views/common/footer.view.client.html'"></div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--<div class="container-fluid">-->
+<!--<div class="input-group">-->
+    <!--<input ng-model="searchText"-->
+           <!--type="text"-->
+           <!--class="form-control">-->
+    <!--<span class="input-group-btn">-->
+        <!--<a ng-click="model.searchPhotos(searchText)"-->
+           <!--class="btn btn-default"-->
+           <!--type="button">-->
+            <!--<span class="glyphicon glyphicon-search"></span>-->
+        <!--</a>-->
+    <!--</span>-->
+<!--</div>-->
+    <!--&lt;!&ndash;{{model.photos}}&ndash;&gt;-->
+    <!--<div class="row">-->
+        <!--<div class="col-xs-4" ng-repeat="photo in model.photos.photo">-->
+            <!--<img ng-click="model.selectPhoto(photo)"-->
+                 <!--ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>-->
+        <!--</div>-->
+    <!--</div>-->
+
+<!--</div>-->

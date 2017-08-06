@@ -24,6 +24,20 @@ app.put("/api/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", up
 app.delete("/api/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", deleteWidget);
 app.post("/api/upload",upload.single('myFile'), uploadImage);
 app.put("/api/page/:pageId/widget",sortWidgets);
+app.put("/api/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId/updateUrl", updatePhoto);
+
+function updatePhoto(req,res){
+    var userId = req.params.userId;
+    var pageId = req.params.pageId;
+    var widgetId = req.params.widgetId;
+    var websiteId = req.params.websiteId;
+    var widget = req.body;
+    var widgeturl = widget.url;
+    var widgetType = 'IMAGE';
+    console.log(widgeturl);
+    var widget = getWidgetById(pageId,widgetId,widgetType,widgeturl);
+    res.json(widget);
+}
 
 function sortWidgets(req,res){
     var pageId = req.params.pageId;
@@ -51,9 +65,10 @@ function uploadImage(req, res) {
     var destination   = myFile.destination;  // folder where file is saved to
     var size          = myFile.size;
     var mimetype      = myFile.mimetype;
+    var widgeturl     = '/uploads/'+filename;
 
-    var widget = getWidgetById(pageId,widgetId,widgetType);
-    widget.url = '/uploads/'+filename;
+    var widget = getWidgetById(pageId,widgetId,widgetType,widgeturl);
+    // widget.url = '/uploads/'+filename;
 
     // var callbackUrl   = "/assignment/#/user/"+userId+"/website/"+websiteId;
     var callbackUrl = "/assignment/#!/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId;
@@ -62,9 +77,10 @@ function uploadImage(req, res) {
     res.redirect(callbackUrl);
 }
 
-function getWidgetById(pageId,widgetId,widgetType){
+function getWidgetById(pageId,widgetId,widgetType,widgeturl){
     for (var w in widgets){
         if (widgets[w]._id === widgetId){
+            widgets[w].url= widgeturl;
             return widgets[w];
         }
     }
@@ -72,6 +88,7 @@ function getWidgetById(pageId,widgetId,widgetType){
     widget._id = widgetId;
     widget.pageId= pageId;
     widget.widgetType = widgetType;
+    widget.url = widgeturl;
     widgets.push(widget);
     widgets = widgets.filter( function( eachobject, id, filteredArray ) {
         return filteredArray.indexOf(eachobject) == id;
