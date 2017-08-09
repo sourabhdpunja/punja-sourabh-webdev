@@ -48,7 +48,7 @@ function sortWidgets(req,res){
     var pageId = req.params.pageId;
     var start= req.query.start;
     var end= req.query.end;
-    widgets.splice(end,0,widgets.splice(start,1)[0]);
+    // widgets.splice(end,0,widgets.splice(start,1)[0]);
     widgetModel
         .reorderWidget(pageId,start,end)
         .then(function (status){

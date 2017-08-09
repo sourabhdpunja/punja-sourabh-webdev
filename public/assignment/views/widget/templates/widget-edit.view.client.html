@@ -12,6 +12,9 @@
     <div ng-switch-when="YOUTUBE">
         <div ng-include="'views/widget/templates/widget-header-youtube.view.client.html'"></div>
     </div>
+    <div ng-switch-when="INPUT">
+        <div ng-include="'views/widget/templates/widget-header-text.view.client.html'"></div>
+    </div>
 </div>
 
 
@@ -54,6 +57,9 @@
                 <div ng-switch-when="YOUTUBE">
                 <div ng-include="'views/widget/templates/widget-youtube-editor.view.client.html'"></div>
                 </div>
+                    <div ng-switch-when="INPUT">
+                        <div ng-include="'views/widget/templates/widget-text-editor.view.client.html'"></div>
+                    </div>
                 </div>
 
             </div>

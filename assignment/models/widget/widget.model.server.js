@@ -35,10 +35,17 @@ function createWidget(pageId,widget){
 }
 
 function findAllWidgetsForThePage(pageId){
-    return widgetModel
-        .find({_page:pageId})
-        .populate('_page')
-        .exec();
+    // return widgetModel
+    //     .find({_page:pageId})
+    //     .populate('_page')
+    //     .exec();
+    return pageModel
+        .findPageById(pageId)
+        .populate('widgets')
+        .exec()
+        .then(function (page){
+            return page.widgets;
+        });
 }
 
 function findWidgetByWidgetId(widgetId){
@@ -96,6 +103,24 @@ function deleteInvalidWidget(){
                             .deleteWidget(widgets[w]._page,widgets[w]._id);
                          });
                 }
+                else if (typeof widgets[w].text === 'undefined' && widgets[w].widgetType === 'HTML')
+                {
+                    widgetModel
+                        .remove({_id:widgets[w]._id})
+                        .then(function (status){
+                            return pageModel
+                                .deleteWidget(widgets[w]._page,widgets[w]._id);
+                        });
+                }
+                else if (typeof widgets[w].rows === 'undefined' && widgets[w].widgetType === 'INPUT')
+                {
+                    widgetModel
+                        .remove({_id:widgets[w]._id})
+                        .then(function (status){
+                            return pageModel
+                                .deleteWidget(widgets[w]._page,widgets[w]._id);
+                        });
+                }
                 else{
                     continue;
                 }
@@ -108,6 +133,19 @@ function deleteInvalidWidget(){
 }
 
 function reorderWidget(pageId, start, end){
-
+    return pageModel
+        .findPageById(pageId)
+        .populate('widgets')
+        .exec()
+        .then(function (page){
+            var widgets = page.widgets;
+            widgets.splice(end,0,(widgets.splice(start,1))[0]);
+            page.widgets = widgets
+            pageModel
+                .updatePage(pageId,page)
+                .then(function (status){
+                    return widgets;
+                });
+        });
 }
 

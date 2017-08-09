@@ -1,0 +1,20 @@
+<div class="container-fluid">
+<label for="name">Name</label>
+<input id="name"
+       class="form-control"
+       placeholder="Name"
+       ng-model="model.widget.widgetType"
+       readonly/>
+
+<div ng-model="model.widget.text"
+     text-angular
+     ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
+</div>
+
+<a class="btn btn-success btn-block"
+   ng-click="model.createWidget(model.widget)">Create HTML</a>
+<a class="btn btn-danger btn-block"
+   ng-click="model.deleteWidget(model.widgetId)">Delete HTML</a>
+</div>

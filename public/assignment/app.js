@@ -4,5 +4,5 @@
 (function (){
     //iife immediately invoked function expression
     angular
-        .module("WamApp",['ngRoute' , 'wbdvDirectives']);
+        .module("WamApp",['ngRoute' , 'wbdvDirectives','textAngular']);
 })();

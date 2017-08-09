@@ -28,6 +28,9 @@
                     if (widget.widgetType ==='HEADING' && typeof widget.size !== 'undefined' )
                     {
                         widget.size= widget.size.toString();
+                    }
+                    else if(widget.widgetType ==='INPUT' && typeof widget.rows == 'undefined'){
+                        widget.rows = 0;
                     };
                     model.widget=widget;
                 });

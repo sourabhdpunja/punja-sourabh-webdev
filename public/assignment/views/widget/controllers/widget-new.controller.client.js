@@ -60,6 +60,12 @@
                 case 'Youtube':
                     widget.widgetType ='YOUTUBE';
                     break;
+                case 'Html':
+                     widget.widgetType ='HTML';
+                    break;
+                case 'Input':
+                    widget.widgetType ='INPUT';
+                break;
             }
             widget.pageId = model.pageId;
             // widget = widgetService.createWidget(widget);
