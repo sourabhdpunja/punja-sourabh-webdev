@@ -39,11 +39,18 @@
                 .then(function (response){
                     // console.log(model.user);
                     var usr = response.data;
+                    var status = response.status;
+                    if (status === 200){
+                        model.message = "Update Successfull";
+                    }else{
+                        model.message = "Update not successfull";
+                    }
+                    console.log(usr);
                     usr.dob = new Date(usr.dob);
                    model.user = usr;
-                   console.log(typeof model.user.dob);
-                   console.log(model.user.dob);
-                    if (typeof model.user.dob !== 'undefined') {
+                   // console.log(typeof model.user.dob);
+                   // console.log(model.user.dob);
+                   //  if (typeof model.user.dob !== 'undefined') {
                         // var date= model.user.dob;
                         // var formattedDate = date.match(/[\d-]+/).pop();
                         // console.log(formattedDate);
@@ -52,7 +59,7 @@
                         // console.log(typeof model.user.dob);
                         // console.log(model.user.dob);
                         // model.user.dob = setDate(model.user.dob);
-                    }
+                    // }
                 });
         }
 

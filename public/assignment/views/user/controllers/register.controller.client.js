@@ -27,8 +27,10 @@
             userService.findUserByUsername(user.username)
                 .then(function(response){
                     var _user = response.data;
-                    if(_user === "0"){
+                    if(_user === null){
                         return userService.registerUser(user)
+                    } else if (_user === 0) {
+                        model.error = "Please input user";
                     } else {
                         model.error = "User already exists";
                     }

@@ -2,14 +2,14 @@
  * Created by Sourabh Punja on 7/28/2017.
  */
 var app = require("../../express");
-var userModel = require("../models/user/user.model.server")
+var userModel = require("../models/user/user.model.server");
 
-var users = [
-    {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-    {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-    {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-    {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" , isAdmin:true }
-];
+// var users = [
+//     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
+//         {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
+//         {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
+//         {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" , isAdmin:true }
+//     ];
 
 //html handlers
 app.get("/api/users",getAllUsers);
@@ -21,14 +21,22 @@ app.delete("/api/user/:userId",deleteUser);
 
 function deleteUser(req, res) {
     var userId = req.params.userId;
-    for(var u in users) {
-            if (users[u]._id === userId) {
-                var index = users.indexOf(users[u]);
-                users.splice(index, 1);
-                res.sendStatus(200);
-            }
-        }
-    res.sendStatus(404);
+    userModel
+        .deleteUser(userId)
+        .then(function (status){
+            res.json(status);
+        },function (err) {
+            res.sendStatus(404).send(err);
+        });
+
+    // for(var u in users) {
+    //         if (users[u]._id === userId) {
+    //             var index = users.indexOf(users[u]);
+    //             users.splice(index, 1);
+    //             res.sendStatus(200);
+    //         }
+    //     }
+    // res.sendStatus(404);
 }
 
 function updateUser(req, res){
@@ -39,9 +47,21 @@ function updateUser(req, res){
     userModel
         .updateUser(userId,user)
         .then(function (status){
-            res.json(status);
+            // console.log(status);
+            // res.json(status);
+            return userModel
+                .findUserById(userId);
         },function (err){
             res.sendStatus(404).send(err);
+        })
+        .then(function (user){
+            // console.log(user);
+            res.json(user);
+            return;
+        },function (err) {
+            res.sendStatus(404).send(err);
+            return;
+            // }
         });
     // for(var u in users) {
     //     if(users[u]._id === userId) {
@@ -59,11 +79,12 @@ function updateUser(req, res){
     // res.sendStatus(404);
 }
 function registerUser(req, res) {
-    // console.log("user is inside");
+    console.log("user is inside");
     var user = req.body;
     userModel
         .createUser(user)
         .then(function (user){
+            console.log(user);
             res.json(user);
         });
 
@@ -79,6 +100,7 @@ function findUser(req,response){
         userModel
             .findUserByCredentials(username,password)
             .then(function (user) {
+                // console.log(user);
                 response.json(user);
                 return;
             },function (err) {
@@ -95,18 +117,39 @@ function findUser(req,response){
         // }
         return;
     } else if(username){
-        for(var u in users) {
-            if(users[u].username === username) {
-                response.send(users[u]);
+        userModel
+            .findUserByUsername(username)
+            .then(function (user) {
+                // console.log(user);
+                response.json(user);
                 return;
-            }
-        }
+            },function (err) {
+                response.sendStatus(404).send(err);
+                return;
+            });
+        return;
+        // for(var u in users) {
+        //     if(users[u].username === username) {
+        //         response.send(users[u]);
+        //         return;
+        //     }
+        // }
     }
     response.send("0");
 }
 
 function getAllUsers(req,response) {
-    response.send(users);
+    userModel
+        .findAllUsers()
+        .then(function (users) {
+            response.json(users);
+            return;
+        },function (err) {
+            response.sendStatus(404).send(err);
+            return;
+            // }
+        });
+    // response.send(users);
 }
 
 function getUserById(req,response){
@@ -119,6 +162,7 @@ function getUserById(req,response){
                         // if (typeof user.date !== 'undefined'){
                         //     user.toISOString().split("T")[0];
                         // }
+            console.log(user);
             response.json(user);
         // }
         });

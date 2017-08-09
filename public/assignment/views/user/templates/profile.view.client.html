@@ -31,6 +31,10 @@
 
 
 <div class="container-fluid wbd-profile-container">
+
+    <div ng-show="model.message" class="alert alert-info">
+        {{model.message}}
+    </div>
     <form>
         <div class="form-group">
             <label for="firstName">First Name</label>
