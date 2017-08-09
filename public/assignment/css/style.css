@@ -102,6 +102,10 @@ body{
     margin: 10px ;
 }
 
+.wbd-widget-format {
+    margin-bottom: 10px ;
+}
+
 .container-fluid.wbd-login-container{
     padding-left: 28px;
     padding-right: 28px;
