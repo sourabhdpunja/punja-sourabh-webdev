@@ -1,10 +1,19 @@
 <div class="container-fluid">
-<label for="name">Name</label>
-<input id="name"
-       class="form-control"
-       placeholder="Name"
-       ng-model="model.widget.widgetType"
-       readonly/>
+
+    <label for="widgetType">Widget Type</label>
+    <input id="widgetType"
+           class="form-control"
+           placeholder="Name"
+           ng-model="model.widget.widgetType"
+           readonly
+    />
+
+    <label for="name">Name</label>
+    <input id="name"
+           class="form-control"
+           placeholder="Name"
+           ng-model="model.widget.name"
+    />
 
 <div ng-model="model.widget.text"
      text-angular
