@@ -29,6 +29,7 @@ var googleConfig = {
     clientSecret : process.env.GOOGLE_CLIENT_SECRET,
     callbackURL  : process.env.GOOGLE_CALLBACK_URL
 };
+passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 app.get("/api/users",isAdmin,getAllUsers);
 app.get("/api/user/:userId",getUserById);
 app.get("/api/user",findUser);
@@ -46,7 +47,7 @@ app.get('/auth/google/callback',
         successRedirect: '/assignment/#!/profile',
         failureRedirect: '/assignment/#!/login'
     }));
-passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+
 
 function googleStrategy(token, refreshToken, profile, done) {
     userModel
