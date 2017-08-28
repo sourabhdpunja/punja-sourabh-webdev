@@ -124,3 +124,8 @@ body{
 .navbar-default a.navbar-brand:hover{
     color:black;
 }
+
+.taj-carousel-container, .taj-carousel-img{
+    width: 100%;
+    height: 600px !important;
+}
