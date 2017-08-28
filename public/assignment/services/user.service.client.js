@@ -7,13 +7,66 @@
 
         var api = {
             "findUserByUsername": findUserByUsername,
-            "findUserByUsernameAndPassword": findUserByUsernameAndPassword,
+            "findUserByUsernameAndPassword": login,
             "findUserById": findUserById,
             "registerUser": registerUser,
             "updateUser": updateUser,
-            "deleteUser": deleteUser
+            "deleteUser": deleteUser,
+            "checkLoggedIn": checkLoggedIn,
+            "logout":logout,
+            "checkAdmin": checkAdmin,
+            "findAllUsers": findAllUsers,
+            "unRegisterUser":unRegisterUser
         };
         return api;
+
+        function unRegisterUser(){
+            var url = "/api/unregister";
+            return $http.delete(url)
+                .then(function (response){
+                    return response.data;
+                });
+            // for(var u in users) {
+            //     if (users[u]._id === userId) {
+            //         var index = users.indexOf(users[u]);
+            //         users.splice(index, 1);
+            //         return;
+            //     }
+            // }
+        }
+
+        function findAllUsers(){
+            var url = "/api/users";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function checkAdmin(){
+            var url = "/api/checkAdmin";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+
+        function logout(){
+            var url = "/api/logout";
+            return $http.post(url)
+                .then(function (response){
+                   return response.data;
+                });
+        }
+
+        function checkLoggedIn(){
+            var url = "/api/checkLoggedIn";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
 
         function deleteUser(userId){
             var url = "/api/user/"+userId;
@@ -64,8 +117,8 @@
             // return null;
         }
 
-        function findUserByUsernameAndPassword(username, password) {
-            return $http.get("/api/user?username="+username+"&password="+password);
+        function login(username, password) {
+            // return $http.get("/api/user?username="+username+"&password="+password);
             // for(var u in users) {
             //     var _user = users[u];
             //     if(_user.username === username && _user.password === password) {
@@ -73,6 +126,7 @@
             //     }
             // }
             // return null;
+            return $http.post("/api/login",{username:username,password:password});
         }
 
     }

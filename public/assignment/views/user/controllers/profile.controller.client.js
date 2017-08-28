@@ -11,24 +11,21 @@
         .module("WamApp")
         .controller("profileController",profileController);
 
-    function profileController($routeParams,$location,userService) {
+    function profileController($routeParams,$location,userService,userobject) {
 
         var model = this;
 
-        model.userId=$routeParams["userId"];
         model.updateUser = updateUser;
-        model.deleteUser = deleteUser;
+        model.unRegisterUser = unRegisterUser;
+        model.logout = logout;
 
         function init() {
-            userService.findUserById(model.userId)
-                .then(function (response){
-                    var usr = response.data;
+                    var usr = userobject;
                     usr.dob = new Date(usr.dob);
                     model.user = usr;
                     // if (typeof model.user.dob !== 'undefined') {
                     //     model.user.dob = setDate(model.user.dob);
                     // }
-                });
             // console.log(model.user);
     }
         init();
@@ -63,12 +60,20 @@
                 });
         }
 
-        function deleteUser(user) {
+        function unRegisterUser() {
             // model.user = userService.deleteUser(user._id);
             // $location.url("/login");
-            userService.deleteUser(user._id)
+            userService
+                .unRegisterUser()
                 .then(function (){
                    $location.url("/login");
+                });
+        }
+        function logout(){
+            userService
+                .logout()
+                .then(function (){
+                    $location.url('/login');
                 });
         }
 
@@ -83,4 +88,6 @@
         //     return date;
         // }
     }
+
+
 })();

@@ -16,8 +16,13 @@ userModel.findAllUsers = findAllUsers;
 userModel.findUserByUsername = findUserByUsername;
 userModel.addWebsite = addWebsite;
 userModel.deleteWebsite = deleteWebsite;
+userModel.findUserByGoogleId = findUserByGoogleId;
 
 module.exports = userModel;
+
+function findUserByGoogleId(googleId) {
+    return userModel.findOne({'google.id': googleId})
+}
 
 function deleteWebsite(userId,websiteId){
     return userModel
@@ -51,6 +56,7 @@ function findUserByCredentials(username,password){
 }
 
 function createUser(user){
+    user.roles =['USER'];
     return userModel.create(user);
 }
 

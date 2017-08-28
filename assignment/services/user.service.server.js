@@ -2,7 +2,18 @@
  * Created by Sourabh Punja on 7/28/2017.
  */
 var app = require("../../express");
+var cookie = require('cookie-parser');
+var session = require('express-session');
+var passport = require('passport');
 var userModel = require("../models/user/user.model.server");
+var LocalStrategy = require('passport-local').Strategy;
+
+passport.use(new LocalStrategy(localStrategy));
+
+
+
+passport.serializeUser(serializeUser);
+passport.deserializeUser(deserializeUser);
 
 // var users = [
 //     {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
@@ -12,12 +23,95 @@ var userModel = require("../models/user/user.model.server");
 //     ];
 
 //html handlers
-app.get("/api/users",getAllUsers);
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var googleConfig = {
+    clientID     : process.env.GOOGLE_CLIENT_ID,
+    clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL  : process.env.GOOGLE_CALLBACK_URL
+};
+app.get("/api/users",isAdmin,getAllUsers);
 app.get("/api/user/:userId",getUserById);
 app.get("/api/user",findUser);
 app.post("/api/user",registerUser);
 app.put("/api/user/:userId",updateUser);
-app.delete("/api/user/:userId",deleteUser);
+app.delete("/api/unregister",unRegisterUser);
+app.delete("/api/user/:userId",isAdmin,deleteUser);
+app.post("/api/login", passport.authenticate('local'),login);
+app.get("/api/checkLoggedIn", checkLoggedIn);
+app.get("/api/checkAdmin", checkAdmin);
+app.post("/api/logout", logout);
+app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+app.get('/auth/google/callback',
+    passport.authenticate('google', {
+        successRedirect: '/assignment/#!/profile',
+        failureRedirect: '/assignment/#!/login'
+    }));
+passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+
+function googleStrategy(token, refreshToken, profile, done) {
+    userModel
+        .findUserByGoogleId(profile.id)
+        .then(
+            function(user) {
+                if(user) {
+                    return done(null, user);
+                } else {
+                    var email = profile.emails[0].value;
+                    var emailParts = email.split("@");
+                    var newGoogleUser = {
+                        username:  emailParts[0],
+                        firstName: profile.name.givenName,
+                        lastName:  profile.name.familyName,
+                        email:     email,
+                        google: {
+                            id:    profile.id,
+                            token: token
+                        }
+                    };
+                    return userModel.createUser(newGoogleUser);
+                }
+            },
+            function(err) {
+                if (err) { return done(err); }
+            }
+        )
+        .then(
+            function(user){
+                return done(null, user);
+            },
+            function(err){
+                if (err) { return done(err); }
+            }
+        );
+}
+function unRegisterUser(req,res){
+    userModel
+        .deleteUser(req.user._id)
+        .then(function (status){
+            res.sendStatus(200);
+        });
+}
+
+function checkAdmin(req,res){
+    if(req.isAuthenticated() && req.user.roles.indexOf('ADMIN') > -1){
+        res.json(req.user)
+    } else{
+        res.send('0');
+    }
+}
+
+function logout(req,res){
+    req.logout();
+    res.sendStatus(200);
+}
+
+function checkLoggedIn(req,res){
+    if(req.isAuthenticated()){
+        res.json(req.user)
+    } else{
+        res.send('0');
+    }
+}
 
 function deleteUser(req, res) {
     var userId = req.params.userId;
@@ -37,6 +131,48 @@ function deleteUser(req, res) {
     //         }
     //     }
     // res.sendStatus(404);
+}
+
+function localStrategy(username, password, done) {
+    userModel
+        .findUserByCredentials(username, password)
+        .then(
+            function(user) {
+                if (!user) {
+                    done(null, false);
+                }
+                else{
+                    done(null, user);
+                }
+            },
+            function(err) {
+                if (err) {
+                    done(err,false);
+                }
+            }
+        );
+}
+
+function serializeUser(user, done) {
+    done(null, user);
+}
+
+function deserializeUser(user, done) {
+    userModel
+        .findUserById(user._id)
+        .then(
+            function(user){
+                done(null, user);
+            },
+            function(err){
+                done(err, null);
+            }
+        );
+}
+
+function login(req,response){
+    var user = req.user;
+    response.json(user);
 }
 
 function updateUser(req, res){
@@ -84,8 +220,9 @@ function registerUser(req, res) {
     userModel
         .createUser(user)
         .then(function (user){
-            console.log(user);
-            res.json(user);
+            req.login(user, function(status){
+                res.json(user);
+            });
         });
 
     // user._id = (new Date()).getTime() + "";
@@ -95,6 +232,9 @@ function registerUser(req, res) {
 function findUser(req,response){
     var username = req.query.username;
     var password = req.query.password;
+    var body = req.body;
+    // var username = body.username;
+    // var password = body.password;
 
     if (username && password){
         userModel
@@ -150,6 +290,14 @@ function getAllUsers(req,response) {
             // }
         });
     // response.send(users);
+}
+
+function isAdmin(req,res,next) {
+    if (req.isAuthenticated()&& req.user.roles.indexOf('ADMIN') > -1){
+        next();
+    } else{
+        res.sendStatus(401);
+    }
 }
 
 function getUserById(req,response){

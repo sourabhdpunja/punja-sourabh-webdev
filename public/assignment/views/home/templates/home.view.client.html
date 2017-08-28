@@ -15,11 +15,12 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a ng-show="!currentUser" href="#!/login">Login</a></li>
-                <li><a ng-show="!currentUser" href="#!/register">Register</a></li>
-                <li><a ng-show="!currentUser" href="#!/profile/{{currentUser._id}}">Profile</a></li>
-                <li><a ng-show="currentUser" href="#!/login">Logout</a></li>
-                <li><a ng-show="currentUser.isAdmin"href="#!/admin">Admin</a></li>
+                <li><a ng-if ="!model.currentUser._id" href="#!/login">Login</a></li>
+                <li><a ng-if="!model.currentUser._id" href="#!/register">Register</a></li>
+                <li><a ng-if="model.currentUser._id" href="#!/profile/{{currentUser._id}}">Profile</a></li>
+                <li><a ng-if="model.currentUser._id" ng-click="model.logout()">Logout</a></li>
+                <!--<li><a ng-if="model.currentUser.isAdmin"href="#!/admin">Admin</a></li>-->
+                <li><a ng-if="model.currentUser.roles.indexOf('ADMIN') > -1" href="#!/admin">Admin</a></li>
                 <li><a href="#!/contact">Contact</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
